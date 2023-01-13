@@ -1,0 +1,7 @@
+{
+    "port": 2100,
+    "webhook": {
+        "enabled": false,
+        "path": "./temp"
+    }
+}
