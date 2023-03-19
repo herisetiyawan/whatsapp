@@ -6,4 +6,4 @@ git@github.com:pedroslopez/whatsapp-web.js.git
 
 How To Install:
 Install package:
-npm i qrcode-terminal express time-stamp axios request valid-url
+```npm i qrcode-terminal express time-stamp axios request valid-url```
