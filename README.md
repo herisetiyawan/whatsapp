@@ -10,6 +10,6 @@ Install package:
 
 Buy me Coffee
 
-Jenius CASHTAG: $herist
-PAYPAL : heriaileen@gmail.com
-BANK MANDIRI : 700010115199
+Jenius CASHTAG: $herist\
+PAYPAL : heriaileen@gmail.com\
+BANK MANDIRI : 700010115199\
