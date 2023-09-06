@@ -11,11 +11,11 @@ RUN apt-get update && \
   libgtk-3-0 && \
   rm -rf /var/lib/apt/lists/*
 
-COPY package.json .
+#COPY package.json .
+COPY . .
 
 RUN npm install
 RUN npm i qrcode-terminal express time-stamp axios request jq valid-url
-COPY . .
 
 ENV NEW_RELIC_NO_CONFIG_FILE=true
 ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true \
