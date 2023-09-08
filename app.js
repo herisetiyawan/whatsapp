@@ -41,7 +41,7 @@ const client = new Client({
  //     "--single-process", // <- this one doesn't works in Windows
  //     "--disable-gpu",
     ],
-   // executablePath: "/usr/bin/chromium",
+    executablePath: "/usr/bin/chromium",
   },
 });
 
