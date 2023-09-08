@@ -1,4 +1,3 @@
-//require('newrelic');
 const qrcode = require("qrcode-terminal");
 const express = require("express");
 const timestamp = require("time-stamp");
