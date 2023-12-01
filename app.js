@@ -97,6 +97,7 @@ client.on("message", async (msg) => {
     if (logDb == "true") {
         try {
             await crud.createDocument({
+                appName:process.env.APP_NAME,
                 msginfo: JSON.stringify(msg),
                 status: 0,
             });
