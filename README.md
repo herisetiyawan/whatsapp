@@ -6,7 +6,7 @@ Need whatsapp web js to running
 
 How To Install:
 Install package:
-```npm i qrcode-terminal express time-stamp axios request valid-url```\
+```npm i qrcode-terminal express time-stamp axios request valid-url dotenv mongodb```
 
 Buy me Coffee
 
