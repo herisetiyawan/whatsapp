@@ -2,7 +2,7 @@
 Whatsapp Api
 
 Need whatsapp web js to running
-git@github.com:pedroslopez/whatsapp-web.js.git
+# https://github.com/pedroslopez/whatsapp-web.js
 
 How To Install:
 Install package:
