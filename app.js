@@ -96,8 +96,11 @@ client.on("message", async (msg) => {
   console.log("Loging status " + logDb);
   if (logDb == "true") {
     // sini
+    let chat = await msg.getChat();
     const postData = {
       type_msg: "INBOX",
+      replyto: chat.id._serialized,
+      body: msg.body,
       key: process.env.APIKEY,
       message: jsonString,
     };
@@ -498,6 +501,26 @@ app.get("/app/qr", async (req, res) => {
       } else sendQr(res);
     })
     .catch(() => sendQr(res));
+});
+
+app.post("/chat/sendmessagebyid/:id", async (req, res) => {
+  let phone = req.params.id;
+  let message = req.body.message;
+
+  console.log("Sending to chat id " + phone);
+
+  client.sendMessage(phone, message).then((response) => {
+    if (response.id.fromMe) {
+      // res.send({
+      //   status: "success",
+      //   message: `Message successfully sent to ${phone}`,
+      // });
+      res.status(200).json({
+        status: true,
+        response: response,
+      });
+    }
+  });
 });
 
 app.post("/chat/sendmessage/:phone", async (req, res) => {
