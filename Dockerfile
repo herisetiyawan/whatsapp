@@ -16,7 +16,8 @@ RUN apt-get update && apt install -y gconf-service libgbm-dev libasound2 libatk1
 COPY package.json .
 
 RUN npm install
-RUN npm i qrcode-terminal express time-stamp axios request valid-url dotenv mongodb
+RUN npm i qrcode-terminal express time-stamp axios request valid-url dotenv mongodb mysql
+RUN cp .env.example .env
 
 COPY . .
 
