@@ -1,6 +1,4 @@
 require("dotenv").config();
-// const crud = require("./helpers/mongodb/crud");
-const CRUD = require("./helpers/mysql/crud");
 const qrcode = require("qrcode-terminal");
 const express = require("express");
 const timestamp = require("time-stamp");
@@ -20,15 +18,6 @@ const mediadownloader = (url, path, callback) => {
     request(url).pipe(fs.createWriteStream(path)).on("close", callback);
   });
 };
-
-const mysqlConn = {
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USERNAME,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DBNAME,
-};
-
-const crud = new CRUD(mysqlConn);
 
 const {
   Client,
@@ -101,33 +90,27 @@ client.on("ready", () => {
 
 client.on("message", async (msg) => {
   console.log("MESSAGE RECEIVED", msg);
-  logingRequest(JSON.stringify(msg));
+  const jsonString = JSON.stringify(msg);
+  logingRequest(jsonString);
   const logDb = process.env.DB_STATUS;
   console.log("Loging status " + logDb);
   if (logDb == "true") {
-    // here
-    (async () => {
-      try {
-        await crud.connect();
+    // sini
+    const postData = {
+      type_msg: "INBOX",
+      key: process.env.APIKEY,
+      message: jsonString,
+    };
 
-        // Example usage
-        const datas = {
-          channel: process.env.APP_NAME,
-          type_msg: "INBOX",
-          logs: jsonString,
-        };
-
-        // Create a user
-        const createUserResult = await crud.create(
-          "whatsapp_messages_inbox",
-          datas
-        );
-        console.log("User created:", createUserResult);
-        await crud.disconnect();
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    })();
+    const url = process.env.URL_NOTIFY;
+    axios
+      .post(url, postData)
+      .then((response) => {
+        console.log("Response:", response.data);
+      })
+      .catch((error) => {
+        console.error("Sending Notify Error: ", error);
+      });
   }
 
   if (config.webhook.enabled) {
