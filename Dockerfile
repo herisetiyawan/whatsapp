@@ -17,9 +17,10 @@ COPY package.json .
 
 RUN npm install
 RUN npm i qrcode-terminal express time-stamp axios request valid-url dotenv mongodb mysql
-RUN cp .env.example .env
 
 COPY . .
+
+RUN cp .env.example .env
 
 #ENV NEW_RELIC_NO_CONFIG_FILE=true
 #ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true \
