@@ -15,6 +15,7 @@ RUN apt-get update && apt install -y vim wget nano gconf-service libgbm-dev liba
 
 COPY package.json .
 
+RUN npm install whatsapp-web.js
 RUN npm install
 RUN npm i qrcode-terminal express time-stamp axios request valid-url dotenv mongodb mysql
 RUN npm install github:pedroslopez/whatsapp-web.js#webpack-exodus
