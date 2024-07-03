@@ -17,6 +17,7 @@ COPY package.json .
 
 RUN npm install
 RUN npm i qrcode-terminal express time-stamp axios request valid-url dotenv mongodb mysql
+RUN npm install github:pedroslopez/whatsapp-web.js#webpack-exodus
 
 COPY . .
 
