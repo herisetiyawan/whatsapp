@@ -34,6 +34,7 @@ const client = new Client({
     authStrategy: new LocalAuth(), // your authstrategy here
     puppeteer: {
       headless: true , args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: "/usr/bin/chromium",
     },
     webVersionCache: {
         type: 'remote',
