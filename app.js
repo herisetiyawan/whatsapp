@@ -32,7 +32,12 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 
 const client = new Client({
     authStrategy: new LocalAuth({
-    clientId: "client-one" })
+    clientId: "client-one" }),
+  puppeteer: {
+    headless: true,
+            args: [ '--no-sandbox', '--disable-gpu' ],
+    executablePath: "/usr/bin/chromium"
+  },
 });
 
 // global.client = client;
