@@ -19,27 +19,20 @@ const mediadownloader = (url, path, callback) => {
   });
 };
 
-const {
-  Client,
-  MessageMedia,
-  Location,
-  List,
-  Buttons,
-  LocalAuth,
-} = require("./index");
+//const {
+//  Client,
+//  MessageMedia,
+//  Location,
+//  List,
+//  Buttons,
+//  LocalAuth,
+//} = require("./index");
 
-const wwebVersion = '2.2407.3';
+const { Client, LocalAuth } = require('whatsapp-web.js');
 
 const client = new Client({
-    authStrategy: new LocalAuth(), // your authstrategy here
-    puppeteer: {
-      headless: true , args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: "/usr/bin/chromium",
-    },
-    webVersionCache: {
-        type: 'remote',
-        remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/${wwebVersion}.html`,
-    },
+    authStrategy: new LocalAuth({
+    clientId: "client-one" })
 });
 
 // global.client = client;
